@@ -6,6 +6,7 @@ import CategoryForm from './components/categoryForm';
 import ProductList from './components/productList';
 import ProductForm from './components/productForm';
 
+//Componente principal de la aplicacion
 function App() {
   return (
     <Router>

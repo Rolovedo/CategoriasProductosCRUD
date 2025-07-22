@@ -2,21 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { createProduct } from '../services/productService';
 import { getCategories } from '../services/categoryService';
 
+//componente para crear un producto
 export default function ProductForm() {
-  const [name, setName] = useState('');
-  const [description, setDesc] = useState('');
-  const [price, setPrice] = useState('');
-  const [category_id, setCategory] = useState('');
-  const [categories, setCategories] = useState([]);
+  const [name, setName] = useState(''); //Estado para el nombre
+  const [description, setDesc] = useState(''); //Estado para la descripcion
+  const [price, setPrice] = useState(''); //Estado para el precio
+  const [category_id, setCategory] = useState(''); //Estado para la categoria seleccionada
+  const [categories, setCategories] = useState([]); //Estado para la lista de categorias
 
   useEffect(() => {
-    getCategories().then(res => setCategories(res.data));
+    getCategories().then(res => setCategories(res.data)); //carga las categorias al iniciar
   }, []);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); //Evita que la pagina se recargue
     createProduct({ name, description, price, category_id }).then(() => {
-      alert('Producto creado');
+      alert('Producto creado'); //Muestra mensaje al crear
       setName('');
       setDesc('');
       setPrice('');
@@ -38,7 +39,7 @@ export default function ProductForm() {
         />
       </div>
       <div className="mb-3">
-        <label className="form-label">Descripción</label>
+        <label className="form-label">Descripcion</label>
         <textarea
           className="form-control"
           value={description}
@@ -57,14 +58,14 @@ export default function ProductForm() {
         />
       </div>
       <div className="mb-3">
-        <label className="form-label">Categoría</label>
+        <label className="form-label">Categoria</label>
         <select
           className="form-select"
           value={category_id}
           onChange={(e) => setCategory(e.target.value)}
           required
         >
-          <option value="">Seleccione categoría</option>
+          <option value="">Seleccione categoria</option>
           {categories.map(cat => (
             <option key={cat.id} value={cat.id}>{cat.name}</option>
           ))}
