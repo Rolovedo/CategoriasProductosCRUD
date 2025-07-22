@@ -12,7 +12,9 @@ export default function ProductList() {
   }, []);
 
   const handleDelete = id => {
-    deleteProduct(id).then(() => setProducts(products.filter(p => p.id !== id)));
+    if (window.confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+      deleteProduct(id).then(() => setProducts(products.filter(p => p.id !== id)));
+    }
   };
 
   const handleEdit = id => {

@@ -1,7 +1,9 @@
+//Configuracion de la conexion a la base de datos MySQL usando variables de entorno
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
 dotenv.config();
 
+//Se crea la conexion usando los valores definidos en el archivo .env
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -9,9 +11,10 @@ const connection = mysql.createConnection({
   database: process.env.DB_NAME
 });
 
+//Se establece la conexion y se muestra un mensaje en consola si es exitosa
 connection.connect(error => {
   if (error) throw error;
-  console.log("Conexión exitosa a la base de datos");
+  console.log("Conexion exitosa a la base de datos");
 });
 
 module.exports = connection;

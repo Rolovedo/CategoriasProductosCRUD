@@ -9,9 +9,11 @@ export default function CategoryList() {
   }, []);
 
   const handleDelete = (id) => {
-    deleteCategory(id).then(() => {
-      setCategories(categories.filter(cat => cat.id !== id));
-    });
+    if (window.confirm('¿Estás seguro de que deseas eliminar esta categoría?')) {
+      deleteCategory(id).then(() => {
+        setCategories(categories.filter(cat => cat.id !== id));
+      });
+    }
   };
 
   const handleEdit = (cat) => {
