@@ -15,14 +15,20 @@ export default function CategoryForm() {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Crear Categoría</h2>
-      <input
-        type="text"
-        placeholder="Nombre"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
-      <button type="submit">Crear</button>
+      <div className="mb-3">
+        <label className="form-label">Nombre</label>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Nombre"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+      </div>
+      <button className="btn btn-primary" type="submit">
+        Crear
+      </button>
     </form>
   );
 }
